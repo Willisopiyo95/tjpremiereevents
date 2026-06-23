@@ -53,14 +53,14 @@ Table of contents
 ====================================== */
 
 :root {
-    --base-color: #006cb9;
+    --base-color: #0142a9;
     --white: #ffffff;
     --black: #000000;
     --red: #f0df83;
     --light-red: #feedec;
     --green: #2ebb79;
-    --crusoe-green: #d39121;
-    --yellow: #ffea23;
+    --crusoe-green: #ce9b01;
+    --yellow: #ce9b01;
     --dark-gray: #232323;
     --medium-gray: #717580;
     --extra-medium-gray: #e4e4e4;
@@ -74,7 +74,7 @@ Table of contents
     --dark-slate-blue: #1f232c;
     --extra-dark-slate-blue: #121418;
     --extra-very-slate-blue: #161620;
-    --tussock-yellow: #BC8947;
+    --tussock-yellow: #ce9b01;
     --aluminium-grey: #80858F;
     --solitude-blue: #f0f4fd;
     --golden-yellow: #006cb9;
