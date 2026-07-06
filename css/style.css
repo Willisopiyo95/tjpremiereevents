@@ -56,11 +56,11 @@ Table of contents
     --base-color: #0142a9;
     --white: #ffffff;
     --black: #000000;
-    --red: #f0df83;
+    --red: #0142a9;
     --light-red: #feedec;
     --green: #2ebb79;
-    --crusoe-green: #ce9b01;
-    --yellow: #ce9b01;
+    --crusoe-green: #efc10a;
+    --yellow: #efc10a;
     --dark-gray: #232323;
     --medium-gray: #717580;
     --extra-medium-gray: #e4e4e4;
@@ -74,7 +74,7 @@ Table of contents
     --dark-slate-blue: #1f232c;
     --extra-dark-slate-blue: #121418;
     --extra-very-slate-blue: #161620;
-    --tussock-yellow: #ce9b01;
+    --tussock-yellow: #efc10a;
     --aluminium-grey: #80858F;
     --solitude-blue: #f0f4fd;
     --golden-yellow: #006cb9;
@@ -82,14 +82,14 @@ Table of contents
     --white-ice: #d8f5ef;
     --cornflower-blue: #445fed;
     --jade: #00AF6B;
-    --orange: #f0df83;
+    --orange: #efc10a;
     --majorelle-blue: #724ade;
     --light-majorelle-blue: #f2edfe;
     --spring-wood: #f9f6f3;
     --tropical-blue: #1ea3b1;
     --camarone: #20642b;
     --seal-brown: #0e0708;
-    --Wasabi: #8ea63a;
+    --Wasabi: #3fcf0a;
 }
 
 
@@ -19312,11 +19312,11 @@ canvas {
 }
 
 .social-icon-style-04 ul li a.facebook span {
-    background-color: #f0df83;
+    background-color: #1877F2;
 }
 
 .social-icon-style-04 ul li a.facebook-square span {
-    background-color: #f0df83;
+    background-color: #1877F2;
 }
 
 .social-icon-style-04 ul li a.flickr span {
@@ -19340,7 +19340,7 @@ canvas {
 }
 
 .social-icon-style-04 ul li a.instagram span {
-    background-color: #f0df83;
+    background-color: #ee2a7b;
 }
 
 .social-icon-style-04 ul li a.jsfiddle span {
