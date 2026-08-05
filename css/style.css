@@ -7345,6 +7345,8 @@ header .navbar-brand .alt-logo, header .navbar-brand .mobile-logo {
 }
 header .navbar-brand img {
   max-height: 46px;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 header .header-top-bar {
   position: fixed;

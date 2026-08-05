@@ -20299,6 +20299,16 @@
     z-index: 1 !important;
   }
 }
+/* Keep logo, social icons and hamburger on one header row on narrow phones (iPhone SE, Pixel, iPhone XR/11, etc.) */
+@media (max-width: 427px) {
+  header .navbar-brand .mobile-logo {
+    max-height: 30px !important;
+  }
+  header .header-icon .header-social-icon a {
+    padding-left: 10px;
+    font-size: 14px;
+  }
+}
 @media (max-width: 767px) {
   header .navbar-expand-lg {
     padding-left: 0;
