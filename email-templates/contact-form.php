@@ -8,7 +8,7 @@ if (! empty($_POST['email'])) {
 	$receiver_email = 'info@tjpremierevents.com';
 
 	// Email Receiver Name for SMTP Email
-	$receiver_name 	= 'Your Name';
+	$receiver_name 	= 'TJ Premier Events';
 
 	// Email Subject
 	$subject = 'Contact form details';
@@ -69,15 +69,11 @@ if (! empty($_POST['email'])) {
 
 		$response = array();
 		foreach ($fields as $fieldname => $fieldvalue) {
-			if ($template == 'text') {
-				$response[] = $fieldname . ': ' . $fieldvalue;
-			} else {
-				$fieldname = '<tr>
-									<td align="right" valign="top" style="border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;">' . $fieldname . ': </td>';
-				$fieldvalue = '<td align="left" valign="top" style="border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 0 7px 5px;">' . $fieldvalue . '</td>
-								</tr>';
-				$response[] = $fieldname . $fieldvalue;
-			}
+			$fieldname = '<tr>
+								<td align="right" valign="top" style="border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;">' . $fieldname . ': </td>';
+			$fieldvalue = '<td align="left" valign="top" style="border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 0 7px 5px;">' . $fieldvalue . '</td>
+							</tr>';
+			$response[] = $fieldname . $fieldvalue;
 		}
 
 		$message = '<html>
@@ -87,7 +83,7 @@ if (! empty($_POST['email'])) {
 			<body>
 				<table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
-				<td colspan="2" align="center" valign="top"><img style="margin-top: 15px;" src="http://www.tjpremierevents.com/images/logo-email.png" ></td>
+				<td colspan="2" align="center" valign="top"><img style="margin-top: 15px; max-width: 220px;" src="http://www.tjpremierevents.com/images/tj-full-logo-blue.png" ></td>
 				</tr>
 				<tr>
 				<td width="50%" align="right">&nbsp;</td>
@@ -102,8 +98,12 @@ if (! empty($_POST['email'])) {
 			// Always set content-type when sending HTML email
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			// More headers
-			$headers .= 'From: ' . $fields['Name'] . ' <' . $fields['Email'] . '>' . "\r\n";
+			// Send "From" the site's own domain (not the visitor's address) so mail servers
+			// don't flag it for SPF/DKIM mismatch; use Reply-To so replies still go to the visitor.
+			$headers .= 'From: ' . $receiver_name . ' <' . $receiver_email . '>' . "\r\n";
+			if (! empty($fields['Email'])) {
+				$headers .= 'Reply-To: ' . $fields['Name'] . ' <' . $fields['Email'] . '>' . "\r\n";
+			}
 			if (mail($receiver_email, $subject, $message, $headers)) {
 
 				// Redirect to success page
@@ -140,7 +140,12 @@ if (! empty($_POST['email'])) {
 			$mail->Password = 'YOUR_SMTP_PASSWORD'; // Your Password
 			$mail->SMTPSecure = 'ssl'; // Your Secure Connection
 			$mail->Port     = 465; // Your Port
-			$mail->setFrom($fields['Email'], $fields['Name']);
+			// Most SMTP providers require the From address to match the authenticated
+			// account, so send from the site's own mailbox and reply-to the visitor.
+			$mail->setFrom($receiver_email, $receiver_name);
+			if (! empty($fields['Email'])) {
+				$mail->addReplyTo($fields['Email'], $fields['Name']);
+			}
 
 			foreach ($toemailaddresses as $toemailaddress) {
 				$mail->AddAddress($toemailaddress['email'], $toemailaddress['name']);
